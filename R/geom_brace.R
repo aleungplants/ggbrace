@@ -21,6 +21,7 @@
 #'
 geom_brace <- function(mapping = NULL, data = NULL, inherit.aes=TRUE, #mapping-related
                        inherit.data=TRUE,
+                       linewidth = 0.5, #linewidth for ggplot layer
                        rotate=0, mid=NULL, bending=NULL, npoints=100, #orientation and shape
                        labelsize = 0, labeldistance=NULL, labelrotate=0, #labels
                        textORlabel="text",
@@ -36,14 +37,14 @@ geom_brace <- function(mapping = NULL, data = NULL, inherit.aes=TRUE, #mapping-r
   }else{
     dots_label <- list(color="black")
   }
-  
+
   ggpath_args <- intersect(names(dots), unique(c(formalArgs(geom_path),formalArgs(layer))))
   if(length(ggpath_args)>0){
     dots_path <- dots[ggpath_args]
   }else{
     dots_path <- list(color="black")
   }
-  
+
   #if user provides custom x and y, data (from ggplot main function) must be set to NULL and inherit.aes to FALSE.
   #otherwise ggplot will try to match the custom x and y to the data provided before which will have a different size, ending in an error
   if(!inherit.data){
@@ -92,7 +93,7 @@ geom_brace <- function(mapping = NULL, data = NULL, inherit.aes=TRUE, #mapping-r
     stat = StatBrace,
     data = data, mapping = mapping, geom = "path",
     position = "identity", show.legend = FALSE, inherit.aes = inherit.aes,
-    params = append(dots_path, list(rotate=rotate, bending=bending, npoints=npoints, mid=mid,
+    params = append(dots_path, list(linewidth = linewidth, rotate=rotate, bending=bending, npoints=npoints, mid=mid,
                   outside=FALSE, direction=direction))
   )
 
