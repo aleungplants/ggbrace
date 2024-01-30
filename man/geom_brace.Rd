@@ -9,6 +9,7 @@ geom_brace(
   data = NULL,
   inherit.aes = TRUE,
   inherit.data = TRUE,
+  linewidth = 0.5,
   rotate = 0,
   mid = NULL,
   bending = NULL,
@@ -45,6 +46,8 @@ from a \code{formula} (e.g. \code{~ head(.x, 10)}).}
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
+
+\item{linewidth}{number, linewidth passed to ggplot layer object.}
 
 \item{inherit.data}{boolean, should data (and aes) from the ggplot main function be inherited? Set to FALSE if you set your own x and y.}
 
